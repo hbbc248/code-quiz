@@ -25,25 +25,45 @@ header {
 }
 .timer {
 }
-.question-wrapper {
+.content-wrapper {
     width: 100%;
     padding: 3% 20% 0 20%;
     justify-content: center;
 }
 .title h1 {
-    font-size: 48px;
-    text-align: justify;
-
+    font-size: 54px;
+    text-align: center;
 }
-.answers-wapper {
-    padding-bottom: 20px;
-    margin: 30px 30px;
+.title h2 {
+    font-size: 48px;
+    text-align: left;
+}
+.welcome-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.welcome-wrapper p {
+    font-size: 36px;
+    padding: 30px 15px 0 15px;
+    text-align: center;
+}
+.start-button {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    padding: 5px 20px;
+    font-size: 32px;
+    font-weight: lighter;
+    background-color: var(--color1);
+    color: var(--color4);
+    border: solid 5px var(--color1);
+    border-radius: 8px;
 }
 .answer-button {
     width: 300px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     margin: 28px 0;
     padding: 5px 20px;
     font-size: 32px;
@@ -52,13 +72,66 @@ header {
     color: var(--color4);
     border: solid 5px var(--color1);
     border-radius: 8px;
-
 }
 .answer-feedback p {
+    margin-top: 10px;
     padding-top: 10px;
     border-top: solid 2px var(--color3);
     color: var(--color3);
     font-style: italic;
     font-size: 36px;
-
 }
+.final-wrapper p {
+    font-size: 32px;
+    margin-top: 20px;
+}
+.form-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+.submit-btn {
+    display: flex;
+    margin: 10px 10px;
+    padding: 5px 20px;
+    font-size: 32px;
+    font-weight: lighter;
+    background-color: var(--color1);
+    color: var(--color4);
+    border: solid 5px var(--color1);
+    border-radius: 8px;
+}
+.form-line input {
+    font-size: 32px;
+    margin-left: 5px;
+}
+.form-line p {
+    margin: 0;
+}
+.scores-wrapper h3 {
+    width: 100%;
+    background-color: var(--color3);
+    font-size: 32px;
+    padding: 5px 10px;
+}
+.score-btns {
+    display: flex;
+}
+.score-btn {
+    display: flex;
+    margin: 15px 20px 0 0;
+    padding: 5px 20px;
+    font-size: 32px;
+    font-weight: lighter;
+    background-color: var(--color1);
+    color: var(--color4);
+    border: solid 5px var(--color1);
+    border-radius: 8px;
+}
+/* pseudo (hover) style start */
+.score-btn:hover, .answer-button:hover, .start-button:hover, .submit-btn:hover{
+    background-color: var(--color2);
+    border-color: var(--color2);
+}
+
