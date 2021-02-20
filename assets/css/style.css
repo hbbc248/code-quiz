@@ -23,8 +23,6 @@ header {
 .view-high-scores {
     color: var(--color2);
 }
-.timer {
-}
 .content-wrapper {
     width: 100%;
     padding: 3% 20% 0 20%;
@@ -48,11 +46,8 @@ header {
     padding: 30px 15px 0 15px;
     text-align: center;
 }
-.start-button {
-    width: 200px;
+.score-btn, .answer-btn, .start-btn, .submit-btn {
     display: flex;
-    justify-content: center;
-    margin: 40px 0;
     padding: 5px 20px;
     font-size: 32px;
     font-weight: lighter;
@@ -61,17 +56,14 @@ header {
     border: solid 5px var(--color1);
     border-radius: 8px;
 }
-.answer-button {
+.start-btn {
+    width: 200px;
+    justify-content: center;
+    margin: 40px 0;
+}
+.answer-btn {
     width: 300px;
-    display: flex;
     margin: 28px 0;
-    padding: 5px 20px;
-    font-size: 32px;
-    font-weight: lighter;
-    background-color: var(--color1);
-    color: var(--color4);
-    border: solid 5px var(--color1);
-    border-radius: 8px;
 }
 .answer-feedback p {
     margin-top: 10px;
@@ -92,15 +84,7 @@ header {
     margin-top: 10px;
 }
 .submit-btn {
-    display: flex;
     margin: 10px 10px;
-    padding: 5px 20px;
-    font-size: 32px;
-    font-weight: lighter;
-    background-color: var(--color1);
-    color: var(--color4);
-    border: solid 5px var(--color1);
-    border-radius: 8px;
 }
 .form-line input {
     font-size: 32px;
@@ -119,18 +103,10 @@ header {
     display: flex;
 }
 .score-btn {
-    display: flex;
     margin: 15px 20px 0 0;
-    padding: 5px 20px;
-    font-size: 32px;
-    font-weight: lighter;
-    background-color: var(--color1);
-    color: var(--color4);
-    border: solid 5px var(--color1);
-    border-radius: 8px;
 }
 /* pseudo (hover) style start */
-.score-btn:hover, .answer-button:hover, .start-button:hover, .submit-btn:hover{
+.score-btn:hover, .answer-btn:hover, .start-btn:hover, .submit-btn:hover{
     background-color: var(--color2);
     border-color: var(--color2);
 }
