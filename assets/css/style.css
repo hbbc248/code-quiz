@@ -111,3 +111,145 @@ header {
     border-color: var(--color2);
 }
 
+
+
+
+
+/* Media query for smaller desktops screens and smaller */
+@media screen and (max-width: 980px) {
+    .content-wrapper {
+        padding: 3% 15% 0 15%;
+    }
+    .welcome-wrapper p {
+        font-size: 28px; 
+        padding: 20px 10px 0 10px;
+    }
+    .final-wrapper p {
+        font-size: 26px;
+        text-align: center;
+    }
+    .form-line {
+        justify-content: center;
+    }
+    .score-btn, .answer-btn, .start-btn, .submit-btn {
+        padding: 4px 15px;
+        font-size: 26px;
+    }
+    .form-line input {
+        font-size: 26px;
+        margin-left: 5px;
+    }
+    .title h1 {
+        font-size: 42px;
+    }
+    .title h2 {
+        font-size: 36px;
+    }
+    .answer-feedback p {
+        font-size: 28px;
+    }
+    .start-btn {
+        width: 180px;
+        margin: 30px 0;
+    }
+    .answer-btn {
+        width: 250px;
+        margin: 24px 0;
+    }
+    .submit-btn {
+        margin: 5px 10px;
+    }
+}
+/* Media query for tablets and smaller */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        font-size: 20px;
+    }
+    .content-wrapper {
+        padding: 3% 10% 0 10%;
+    }
+    .welcome-wrapper p {
+        font-size: 24px; 
+        padding: 15px 10px 0 10px;
+    }
+    .final-wrapper p {
+        font-size: 22px;
+        text-align: center;
+    }
+    .score-btn, .answer-btn, .start-btn, .submit-btn {
+        padding: 3px 8px;
+        font-size: 22px;
+    }
+    .form-line input {
+        font-size: 22px;
+        margin-left: 5px;
+    }
+    .title h1 {
+        font-size: 36px;
+    }
+    .title h2 {
+        font-size: 30px;
+    }
+    .answer-feedback p {
+        font-size: 24px;
+    }
+    .start-btn {
+        width: 150px;
+        margin: 15px 0;
+    }
+    .answer-btn {
+        width: 200px;
+        margin: 12px 0;
+    }
+    .scores-wrapper h3 {
+        font-size: 24px;
+    }
+}
+/* Media query for mobile phones and smaller */
+@media screen and  (max-width: 575px) {   
+    header {
+        font-size: 16px;
+    }
+    .content-wrapper {
+        padding: 3% 5% 0 5%;
+    }
+    .welcome-wrapper p {
+        font-size: 18px; 
+        padding: 10px 5px 0 5px;
+    }
+    .final-wrapper p {
+        font-size: 18px;
+        text-align: center;
+    }
+    .score-btn, .answer-btn, .start-btn, .submit-btn {
+        padding: 3px 5px;
+        font-size: 18px;
+    }
+    .form-line input {
+        font-size: 18px;
+    }
+    .title h1 {
+        font-size: 28px;
+    }
+    .title h2 {
+        font-size: 24px;
+    }
+    .answer-feedback p {
+        font-size: 18px;
+    }
+    .start-btn {
+        width: 130px;
+        margin: 15px 0;
+    }
+    .answer-btn {
+        justify-content: center;
+        width: 180px;
+        margin: 8px 0;
+    }
+    .scores-wrapper h3 {
+        font-size: 20px;
+    }
+}
+
+
