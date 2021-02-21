@@ -3,6 +3,7 @@ var startQuizEl = document.querySelector("#start-quiz");
 var answersEl = document.querySelector("#answers");
 var feedbackEl = document.querySelector(".answer-feedback");
 var finalEl = document.querySelector("#final-score");
+var submitEl = document.querySelector("#initials-input");
 var timerEl = document.querySelector("#timer-count");
 var timer = 75;
 var n = 0;
@@ -58,7 +59,7 @@ var initialScreen = function() {
 
     var startBtn = document.createElement("button");
     startBtn.className = "start-btn";
-    startBtn.textContent = "Submit";
+    startBtn.textContent = "Start Quiz";
     startQuizEl.appendChild(startBtn);
 };
 
@@ -192,11 +193,13 @@ var clickFilter = function(event) {
 var timerStart = function () {
     timer = 75;
     setInterval(function() {
-        if (timer <= 0) {
+        if (timer <= 0)  {
             clearInterval(timer = 0);
         }
-        timerEl.innerHTML = timer;
+        if (n < questions.length) {
         timer -=1;
+        }
+        timerEl.innerHTML = timer;
     }, 1000);
 };
 
