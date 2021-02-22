@@ -109,12 +109,12 @@ header {
 .score-btn:hover, .answer-btn:hover, .start-btn:hover, .submit-btn:hover{
     background-color: var(--color2);
     border-color: var(--color2);
+    cursor: pointer;
 }
-
-
-
-
-
+.view-high-scores p:hover {
+    color: var(--color1);
+    cursor: pointer;
+} 
 /* Media query for smaller desktops screens and smaller */
 @media screen and (max-width: 980px) {
     .content-wrapper {

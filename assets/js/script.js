@@ -8,7 +8,6 @@ var finalEl = document.querySelector("#final-score");
 var submitEl = document.querySelector("#initials-input");
 var highScoreEl = document.querySelector("#high-scores");
 var btnDivEl = document.querySelector(".score-btns");
-// var timerEl = document.querySelector("#timer-count"); 
 var highScores = [];
 var score = 0;
 var timer = 75;
@@ -52,7 +51,8 @@ var questions = [
 var initialScreen = function() {
     //create high scores view and timer
     highScoreLinkEl.innerHTML = "<p>View high scores</p>";
-    timerEl.innerHTML = "<p>Time: 75</p>";
+    timer = 75;
+    timerEl.innerHTML = "<p>Time: " + timer + "</p>";
 
 
     // create Title "Coding Quiz Challenge"
@@ -101,17 +101,6 @@ var quizStart = function () {
         a4.className = "answer-btn";
         a4.id = "answer4";
         answersEl.appendChild(a4);  
-    /*
-    for (i = 0; i < 4; i++) {
-        var answerEl = document.createElement("button");
-        answerEl.className = "answer-btn";
-        var newId = "answer"+i;
-        answerEl.id = newId;
-        answerEl.textContent = "aqui";
-        answersEl.appendChild(answerEl);
-    }
-    */
-  
     // call question print function for first question
     n = 0;
     questionPrint(n);
@@ -274,12 +263,16 @@ var backOrClear = function(event) {
         clearAll();
         initialScreen();
     }
-
-    
-
-
 };
-
+var highScoreLink = function() {
+    if (timer === 75) {
+        clearAll();
+        highScoresView();
+    }
+    else {
+        return false;
+    }
+};
 
 
 
@@ -306,8 +299,6 @@ var clickFilter = function(event) {
 };
 // timer function
 var timerStart = function () {
-    timer = 75;
-    timerEl.innerHTML = "<p>Time: " + timer + "</p>";
     var t = setInterval(function() {
         if (timer === 0)     {
             clearInterval(t);
@@ -326,10 +317,10 @@ var timerStart = function () {
 
 // event listeners
 
-
+//high score link 
+highScoreLinkEl.addEventListener("click", highScoreLink);
 //go back or clear high score
 btnDivEl.addEventListener("click", backOrClear);
-
 // initials submit
 finalEl.addEventListener("submit", highScoreHandler);
 // quesiton answered
