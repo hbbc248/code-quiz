@@ -114,6 +114,7 @@ var quizStart = function () {
     */
   
     // call question print function for first question
+    n = 0;
     questionPrint(n);
 };
 
@@ -182,27 +183,32 @@ var highScoreHandler = function(event) {
     var scoreDataObj = {
         name: initialsInput,
         score: score
-    } 
+    }
     if (!savedHighScores) {
         highScores.push(scoreDataObj);
         saveHighScores();
-        console.log(highScores);
-        return fromFinalToHighScores()      
+        clearAll();
+        return highScoresView();
     }
     else {
         highScores = JSON.parse(savedHighScores);
+        //checking if there is saved data but it was cleared
+        if (highScores.length < 1) {
+            highScores.push(scoreDataObj);
+            saveHighScores();
+            clearAll();
+            return highScoresView();
+        }
         for (i = 0; i < highScores.length; i++) {
             if (highScores[i].score < scoreDataObj.score) {
                 highScores.splice(i, 0, scoreDataObj);
                 highScores = highScores.slice(0,5);
-                console.log(highScores);
                 saveHighScores();
                 break;
             }
             else if (i === (highScores.length - 1)) {
                 highScores.push(scoreDataObj);
                 highScores = highScores.slice(0,5);
-                console.log(highScores);
                 saveHighScores();
                 break;
             }
@@ -226,6 +232,7 @@ var clearAll = function() {
     btnDivEl.innerHTML = "";
     return false;
 };
+// high scores view function
 var highScoresView = function() {
     // read high scores from localstorage
     var savedHighScores = localStorage.getItem("JSQscores");
@@ -241,13 +248,33 @@ var highScoresView = function() {
         scoreEl.textContent = (i+1) + ". " + highScores[i].name + " - " + highScores[i].score;
         highScoreEl.appendChild(scoreEl);
     }
-    if (!highScores) {
+    // if there is not high scores saved or high score was cleared
+    if ((!highScores) || (highScores.length < 1)) {
         var scoreEl = document.createElement("h3");
         scoreEl.textContent = "No high scores saved"
         highScoreEl.appendChild(scoreEl);
     }
+
     // create element for buttons
-    btnDivEl.innerHTML = "<button type='button' class='score-btn'>Go back</button><button type='button' class='score-btn'>Clear high scores</button>";  
+    btnDivEl.innerHTML = "<button type='button' class='score-btn' id='back'>Go back</button><button type='button' class='score-btn' id='clear'>Clear high scores</button>";  
+};
+var backOrClear = function(event) {
+    // Clear high scores was clicked
+    if (event.target.matches("#clear")) {
+        highScores = [];
+        saveHighScores();
+        clearAll();
+        highScoresView();
+    }
+    // Go back button was clicked
+    if (event.target.matches("#back")) {
+        clearAll();
+        initialScreen();
+    }
+
+    
+
+
 };
 
 
@@ -264,7 +291,6 @@ var highScoresView = function() {
 
 // click lisenter filter to make sure it was start button clicked
 var clickFilter = function(event) {
-    var targetEl = event.target;
     // start quiz button was clicked
     if (event.target.matches(".start-btn")) {
         // start timer and quiz
@@ -278,22 +304,27 @@ var clickFilter = function(event) {
 // timer function
 var timerStart = function () {
     timer = 75;
-    setInterval(function() {
-        if (timer <= 0)  {
-            clearInterval(timer = 0);
+    timerEl.innerHTML = timer;
+    var t = setInterval(function() {
+        if ((timer <= 0) || (n >= questions.length))     {
+            clearInterval(t);
+            timer = 0;
+            timerEl.innerHTML = timer;
+            quizEnd();
         }
         if (n < questions.length) {
-        timer -=1;
+            timer -=1;
         }
-        timerEl.innerHTML = timer;
+        timerEl.innerHTML = timer; 
     }, 1000);
+    timer = 75;
 };
 
 // event listeners
 
 
 //go back or clear high score
-// btnDivEl.addEventListener("click", )
+btnDivEl.addEventListener("click", backOrClear);
 
 // initials submit
 finalEl.addEventListener("submit", highScoreHandler);
