@@ -23,30 +23,78 @@ var fbEl = document.querySelector("#feedback");
 // Questions variable
 var questions = [
     {
-        question: "What is there",
-        a1: "jose",
-        a2: "maria",
-        a3: "carlos",
-        a4: "pedro",
+        question: "Inside which HTML element do we put the JavaScript?",
+        a1: "javascript",
+        a2: "js",
+        a3: "scripting",
+        a4: "script",
+        ca: "answer4"
+    },
+    {
+        question: "Where is the correct place to insert a javaScript?",
+        a1: "<body> section",
+        a2: "<head> section",
+        a3: "Both",
+        a4: "None",
+        ca: "answer1"
+    },
+    {
+        question: "How do you write 'Hello' in an allert box?",
+        a1: "msgBox('Hello')",
+        a2: "alertB('Hellow')",
+        a3: "alert('Hello')",
+        a4: "msg('Hello')",
+        ca: "answer3"
+    },
+    {
+        question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
+        a1: "if i=!5 then",
+        a2: "if (i!=5)",
+        a3: "if i<>5",
+        a4: "if (i<>5)",
         ca: "answer2"
     },
     {
-        question: "What is here",
-        a1: "alla",
-        a2: "por aqui",
-        a3: "no por aqui",
-        a4: "lejos",
+        question: "How does a WHILE loop start?",
+        a1: "while i=1 to 10",
+        a2: "while (i<=1-;i++)",
+        a3: "while (i<=10)",
+        a4: "while 20<i<1",
         ca: "answer3"
-    } 
+    },
+    {
+        question: "How does a FOR loop start?",
+        a1: "for i=1 to 5",
+        a2: "for (i=0;i<5;i++)",
+        a3: "for (i=0;i<=10)",
+        a4: "for (i<=5;i++)",
+        ca: "answer2"
+    },
+    {
+        question: "How do you add a comment in JavaScript?",
+        a1: "<!--comment-->",
+        a2: "'comment'",
+        a3: "//comment",
+        a4: "c--comment",
+        ca: "answer3"
+    },
+    {
+        question: "Which event occurs when the user clicks on a HTML element?",
+        a1: "onchange",
+        a2: "onmouseclick",
+        a3: "onmouseover",
+        a4: "onclick",
+        ca: "answer4"
+    },
+    {
+    question: "How do you declare a JavaScript variable?",
+        a1: "varia carName",
+        a2: "v carName",
+        a3: "var carName",
+        a4: "j carName",
+        ca: "answer3"
+    }
 ];
-
-
-
-
-
-
-
-
 //initial screen function
 var initialScreen = function() {
     //create high scores view and timer
@@ -131,7 +179,7 @@ var answerSequence = function(event) {
             }
             setTimeout(() => {
                 fbEl.remove();
-            }, 1000);
+            }, 800);
             n++;
             if (n >= questions.length) {
                 return quizEnd();
