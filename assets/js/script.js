@@ -1,3 +1,5 @@
+var highScoreLinkEl = document.querySelector("#high-scores-link");
+var timerEl = document.querySelector("#timer");
 var titleEl = document.querySelector("#title-content");
 var startQuizEl = document.querySelector("#start-quiz"); 
 var answersEl = document.querySelector("#answers");
@@ -6,7 +8,7 @@ var finalEl = document.querySelector("#final-score");
 var submitEl = document.querySelector("#initials-input");
 var highScoreEl = document.querySelector("#high-scores");
 var btnDivEl = document.querySelector(".score-btns");
-var timerEl = document.querySelector("#timer-count");
+// var timerEl = document.querySelector("#timer-count"); 
 var highScores = [];
 var score = 0;
 var timer = 75;
@@ -48,6 +50,10 @@ var questions = [
 
 //initial screen function
 var initialScreen = function() {
+    //create high scores view and timer
+    highScoreLinkEl.innerHTML = "<p>View high scores</p>";
+    timerEl.innerHTML = "<p>Time: 75</p>";
+
 
     // create Title "Coding Quiz Challenge"
     var initialTitle = document.createElement("h1");
@@ -71,18 +77,12 @@ var initialScreen = function() {
 //quiz start function
 var quizStart = function () {
     // remove all initial message elements
-    var remTitle = document.querySelector("#initial-title");
-    remTitle.remove();
-    var remMessage = document.querySelector("#initial-message");
-    remMessage.remove();
-    var remButton = document.querySelector(".start-btn");
-    remButton.remove();
+    clearAll();
     // create element for question
     questionEl = document.createElement("h2");
     questionEl.id = "question";
     titleEl.appendChild(questionEl);
     // create element for answers
-      
         a1 = document.createElement("button");
         a1.className = "answer-btn";
         a1.id = "answer1";
@@ -101,7 +101,6 @@ var quizStart = function () {
         a4.className = "answer-btn";
         a4.id = "answer4";
         answersEl.appendChild(a4);  
-    
     /*
     for (i = 0; i < 4; i++) {
         var answerEl = document.createElement("button");
@@ -234,6 +233,10 @@ var clearAll = function() {
 };
 // high scores view function
 var highScoresView = function() {
+    // eliminite high scores link and timer elements
+    highScoreLinkEl.innerHTML = "";
+    timerEl.innerHTML = "";
+
     // read high scores from localstorage
     var savedHighScores = localStorage.getItem("JSQscores");
     highScores = JSON.parse(savedHighScores);
@@ -304,20 +307,21 @@ var clickFilter = function(event) {
 // timer function
 var timerStart = function () {
     timer = 75;
-    timerEl.innerHTML = timer;
+    timerEl.innerHTML = "<p>Time: " + timer + "</p>";
     var t = setInterval(function() {
-        if ((timer <= 0) || (n >= questions.length))     {
+        if (timer === 0)     {
             clearInterval(t);
-            timer = 0;
-            timerEl.innerHTML = timer;
+            timerEl.innerHTML = "<p>Time: " + timer + "</p>";
             quizEnd();
         }
-        if (n < questions.length) {
-            timer -=1;
+        if (n >= questions.length) {
+            clearInterval(t);
         }
-        timerEl.innerHTML = timer; 
+        if ((n < questions.length) && (timer > 0)) {
+        timer -=1;
+        }
+        timerEl.innerHTML = "<p>Time: " + timer + "</p>";
     }, 1000);
-    timer = 75;
 };
 
 // event listeners
