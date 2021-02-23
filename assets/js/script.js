@@ -191,6 +191,9 @@ var answerSequence = function(event) {
 var quizEnd = function () {
     // timer is the score
     score = timer;
+    if (score < 0) {
+        score = 0;
+    }
     //eliminate question answers elements
     a1.remove();
     a2.remove();
@@ -352,8 +355,9 @@ var clickFilter = function(event) {
 // timer function
 var timerStart = function () {
     var t = setInterval(function() {
-        if (timer === 0)     {
+        if (timer <= 0)     {
             clearInterval(t);
+            timer = 0;
             timerEl.innerHTML = "<p>Time: " + timer + "</p>";
             quizEnd();
         }
