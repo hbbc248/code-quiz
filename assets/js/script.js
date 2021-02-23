@@ -1,3 +1,4 @@
+// DOM elements
 var highScoreLinkEl = document.querySelector("#high-scores-link");
 var timerEl = document.querySelector("#timer");
 var titleEl = document.querySelector("#title-content");
@@ -8,17 +9,12 @@ var finalEl = document.querySelector("#final-score");
 var submitEl = document.querySelector("#initials-input");
 var highScoreEl = document.querySelector("#high-scores");
 var btnDivEl = document.querySelector(".score-btns");
+
+//Global variables
 var highScores = [];
 var score = 0;
 var timer = 75;
 var n = 0;
-
-
-
-var questionEl = document.querySelector("#question");
-var fbEl = document.querySelector("#feedback");
-
-
 
 // Questions variable
 var questions = [
@@ -95,13 +91,13 @@ var questions = [
         ca: "answer3"
     }
 ];
+
 //initial screen function
 var initialScreen = function() {
     //create high scores view and timer
     highScoreLinkEl.innerHTML = "<p>View high scores</p>";
     timer = 75;
     timerEl.innerHTML = "<p>Time: " + timer + "</p>";
-
 
     // create Title "Coding Quiz Challenge"
     var initialTitle = document.createElement("h1");
@@ -120,7 +116,6 @@ var initialScreen = function() {
     startBtn.textContent = "Start Quiz";
     startQuizEl.appendChild(startBtn);
 };
-
 
 //quiz start function
 var quizStart = function () {
@@ -154,6 +149,7 @@ var quizStart = function () {
     questionPrint(n);
 };
 
+// question view function
 var questionPrint = function(i) {     
     questionEl.textContent = questions[i].question;
     a1.textContent = questions[i].a1;
@@ -161,6 +157,8 @@ var questionPrint = function(i) {
     a3.textContent = questions[i].a3;
     a4.textContent = questions[i].a4;
 };
+
+// questions sequence
 var answerSequence = function(event) {
     if (timer > 0) {
         // an anwer was clicked 
@@ -188,6 +186,8 @@ var answerSequence = function(event) {
         }   
     }
 };
+
+// quiz end function
 var quizEnd = function () {
     // timer is the score
     score = timer;
@@ -201,6 +201,7 @@ var quizEnd = function () {
     // create other final page elements 
     finalEl.innerHTML =  "<p>Your final score is " + score + "</p><div class='form-line' id='initials-input'><p>Enter initials:</p><input type='text' name='initials' id='initials' placeholder='Your initials'/><button class='submit-btn'>Submit</button>";
 };
+
 // high score handler function
 var highScoreHandler = function(event) {
     event.preventDefault();
@@ -253,11 +254,13 @@ var highScoreHandler = function(event) {
     clearAll();
     highScoresView ();
 };
+
 // function to save high scores
 var saveHighScores = function() {
     localStorage.setItem("JSQscores", JSON.stringify(highScores));
 };
-// function to prepare window from final score to high score view
+
+// function to clear all window except time and high scores link
 var clearAll = function() {
     highScoreEl.innerHTML = "";
     feedbackEl.innerHTML = "";
@@ -268,6 +271,7 @@ var clearAll = function() {
     btnDivEl.innerHTML = "";
     return false;
 };
+
 // high scores view function
 var highScoresView = function() {
     // eliminite high scores link and timer elements
@@ -298,6 +302,8 @@ var highScoresView = function() {
     // create element for buttons
     btnDivEl.innerHTML = "<button type='button' class='score-btn' id='back'>Go back</button><button type='button' class='score-btn' id='clear'>Clear high scores</button>";  
 };
+
+// filter between back or clear score buttons
 var backOrClear = function(event) {
     // Clear high scores was clicked
     if (event.target.matches("#clear")) {
@@ -312,6 +318,8 @@ var backOrClear = function(event) {
         initialScreen();
     }
 };
+
+// view high scores link only works when timer is 75 (initial page)
 var highScoreLink = function() {
     if (timer === 75) {
         clearAll();
@@ -322,18 +330,7 @@ var highScoreLink = function() {
     }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-// click lisenter filter to make sure it was start button clicked
+// click lisenter filter to make sure it was start quiz button clicked
 var clickFilter = function(event) {
     // start quiz button was clicked
     if (event.target.matches(".start-btn")) {
@@ -345,6 +342,7 @@ var clickFilter = function(event) {
         return false;
     }
 };
+
 // timer function
 var timerStart = function () {
     var t = setInterval(function() {
@@ -376,5 +374,5 @@ answersEl.addEventListener("click", answerSequence);
 // start quiz button
 startQuizEl.addEventListener("click", clickFilter);
 
-
+// initial function called
 initialScreen();
