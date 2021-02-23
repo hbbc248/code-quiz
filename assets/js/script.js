@@ -319,18 +319,24 @@ var backOrClear = function(event) {
     }
 };
 
-// view high scores link only works when timer is 75 (initial page)
+// view high scores link
 var highScoreLink = function() {
+    // only should work on initial screen when timer is 75
     if (timer === 75) {
         clearAll();
         highScoresView();
     }
+    // window alert if high score link is clicked before submiting initials
+    else if (n >= questions.length) {
+        alert("Unable to view high scores until your initials are submitted, Please submit your initials");
+        return false;
+    }  
     else {
         return false;
     }
 };
 
-// click lisenter filter to make sure it was start quiz button clicked
+// click listener filter to make sure it was start quiz button clicked
 var clickFilter = function(event) {
     // start quiz button was clicked
     if (event.target.matches(".start-btn")) {
