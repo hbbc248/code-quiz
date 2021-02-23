@@ -27,15 +27,15 @@ var questions = [
         ca: "answer4"
     },
     {
-        question: "Where is the correct place to insert a javaScript?",
+        question: "Where is the correct place to insert a JavaScript?",
         a1: "<body> section",
         a2: "<head> section",
         a3: "Both",
         a4: "None",
-        ca: "answer1"
+        ca: "answer3"
     },
     {
-        question: "How do you write 'Hello' in an allert box?",
+        question: "How do you write 'Hello' in an alert box?",
         a1: "msgBox('Hello')",
         a2: "alertB('Hellow')",
         a3: "alert('Hello')",
@@ -108,7 +108,7 @@ var initialScreen = function() {
     // create inital message
     var initialMessage = document.createElement("p");
     initialMessage.id = "initial-message";
-    initialMessage.textContent = "Try to answer the following code related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds";
+    initialMessage.textContent = "Try to answer the following code related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
     startQuizEl.appendChild(initialMessage);
 
     var startBtn = document.createElement("button");
